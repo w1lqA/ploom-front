@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки — 3D Модели Генератор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Настройки</h1>
+        
+        <div class="settings-section">
+            <h2>Аккаунт</h2>
+            <div class="setting-item">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" value="Текущий пользователь" class="setting-input">
+            </div>
+            <div class="setting-item">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" value="user@example.com" class="setting-input">
+            </div>
+            <button class="auth-btn">Сохранить изменения</button>
+        </div>
+
+        <div class="settings-section">
+            <h2>Внешний вид</h2>
+            <div class="setting-item">
+                <label for="theme">Тема оформления</label>
+                <select id="theme" class="setting-input">
+                    <option value="dark">Тёмная</option>
+                    <option value="light">Светлая</option>
+                    <option value="auto">Системная</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="language">Язык интерфейса</label>
+                <select id="language" class="setting-input">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Уведомления</h2>
+            <div class="setting-item checkbox">
+                <input type="checkbox" id="email-notifications" checked>
+                <label for="email-notifications">Email уведомления</label>
+            </div>
+            <div class="setting-item checkbox">
+                <input type="checkbox" id="project-updates" checked>
+                <label for="project-updates">Обновления проектов</label>
+            </div>
+            <div class="setting-item checkbox">
+                <input type="checkbox" id="newsletter">
+                <label for="newsletter">Рассылка новостей</label>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h2>Безопасность</h2>
+            <div class="setting-item">
+                <label for="current-password">Текущий пароль</label>
+                <input type="password" id="current-password" class="setting-input" placeholder="Введите текущий пароль">
+            </div>
+            <div class="setting-item">
+                <label for="new-password">Новый пароль</label>
+                <input type="password" id="new-password" class="setting-input" placeholder="Введите новый пароль">
+            </div>
+            <div class="setting-item">
+                <label for="confirm-password">Подтвердите пароль</label>
+                <input type="password" id="confirm-password" class="setting-input" placeholder="Повторите новый пароль">
+            </div>
+            <button class="auth-btn">Сменить пароль</button>
+        </div>
+
+        <div class="settings-section danger-zone">
+            <h2>Опасная зона</h2>
+            <p class="warning-text">Эти действия нельзя отменить. Будьте осторожны.</p>
+            <button class="danger-btn">Удалить аккаунт</button>
+        </div>
+
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</body>
+</html>

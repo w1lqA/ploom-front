@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Модели Генератор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <header class="header">
+                <h1>3D Модели</h1>
+                <p>Создавайте 3D модели с помощью текстовых запросов</p>
+            </header>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Опишите, что вы хотите создать...">
+                    <button class="search-btn" id="searchBtn">Создать</button>
+                </div>
+                <div class="query-examples">
+                    <div class="query-example">космический корабль</div>
+                    <div class="query-example">реалистичный дракон</div>
+                    <div class="query-example">спортивная машина</div>
+                    <div class="query-example">робот-помощник</div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                <p>© 2025 3D Models Generator</p>
+                <div class="auth-links">
+                    <a href="login.html">Войти</a> | 
+                    <a href="register.html">Регистрация</a> | 
+                    <a href="profile.html">Профиль</a>
+                </div>
+            </footer>
+        </div>
+        
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
+        <div class="sidebar" id="sidebar">
+            <h2>Меню</h2>
+            
+            <div class="sidebar-section">
+                <h3>Создание</h3>
+                <div class="menu-item" data-action="create-from-image">Из изображения</div>
+                <div class="menu-item" data-action="create-from-text">Из текста</div>
+                <div class="menu-item" data-action="my-projects">Мои проекты</div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Пользователь</h3>
+                <a href="profile.html" class="menu-item">Профиль</a>
+                <a href="login.html" class="menu-item">Войти</a>
+                <a href="register.html" class="menu-item">Регистрация</a>
+                <div class="menu-item" data-action="logout">Выйти</div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Настройки</h3>
+                <a href="settings.html" class="menu-item">Настройки</a>
+                <a href="help.html" class="menu-item">Помощь</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Сайт загружен!');
+            
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchInput');
+            const notification = document.getElementById('notification');
+            const queryExamples = document.querySelectorAll('.query-example');
+            const menuItems = document.querySelectorAll('.menu-item[data-action]');
+
+            function showNotification(message) {
+                if (notification) {
+                    notification.textContent = message;
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 3000);
+                }
+            }
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                sidebarToggle.classList.toggle('active');
+            }
+
+            function performSearch(query) {
+                if (!query.trim()) {
+                    showNotification('Введите запрос для создания модели');
+                    return;
+                }
+                showNotification(`Генерируем модель по запросу: "${query}"`);
+                setTimeout(() => {
+                    showNotification('Модель успешно создана!');
+                }, 1500);
+            }
+
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleSidebar();
+                });
+            }
+
+            if (searchBtn && searchInput) {
+                searchBtn.addEventListener('click', () => {
+                    performSearch(searchInput.value);
+                });
+
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch(searchInput.value);
+                    }
+                });
+            }
+
+            if (queryExamples.length > 0) {
+                queryExamples.forEach(example => {
+                    example.addEventListener('click', () => {
+                        if (searchInput) {
+                            searchInput.value = example.textContent;
+                            performSearch(example.textContent);
+                        }
+                    });
+                });
+            }
+
+            if (menuItems.length > 0) {
+                menuItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const text = this.textContent;
+                        showNotification(`Вы выбрали: ${text}`);
+                        if (window.innerWidth <= 768) toggleSidebar();
+                    });
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (sidebar && sidebarToggle && sidebar.classList.contains('active')) {
+                    if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                        toggleSidebar();
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+                    toggleSidebar();
+                }
+            });
+
+            console.log('Все обработчики установлены!');
+        });
+    </script>
+</body>
+</html>
