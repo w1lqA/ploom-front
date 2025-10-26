@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Избранное — 3D Модели Генератор</title>
+    <script src="scripts/favorites.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f0f0f',
+                            card: '#1a1a1a',
+                            input: '#111111',
+                            hover: '#222222',
+                            border: '#333333',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .sidebar-transition {
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .menu-item-transition {
+            transition: all 0.3s ease;
+        }
+        
+        .bar-transition {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-toggle.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .sidebar-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .sidebar-toggle.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .notification-transition {
+            transition: transform 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white min-h-screen">
+    <div class="flex min-h-screen relative">
+        <!-- Основной контент -->
+        <div class="flex-1 p-5">
+
+            <!-- Основной контент -->
+            <div class="max-w-[1200px] mx-auto mt-[100px]">
+                <div class="text-center mb-10">
+                    <h1 class="text-4xl font-light mb-3">Избранное</h1>
+                    <p class="text-gray-400 text-lg">Ваши сохранённые проекты</p>
+                </div>
+
+                <!-- Фильтрация -->
+                <div class="flex gap-5 mb-8 p-5 bg-dark-card rounded-xl border border-dark-border">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-400 text-sm">Сортировка:</label>
+                        <select class="bg-dark-input border border-dark-border rounded-lg px-4 py-2 text-white focus:border-gray-500 outline-none min-w-[180px]">
+                            <option value="newest">Сначала новые</option>
+                            <option value="oldest">Сначала старые</option>
+                            <option value="name">По названию</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-400 text-sm">Категория:</label>
+                        <select class="bg-dark-input border border-dark-border rounded-lg px-4 py-2 text-white focus:border-gray-500 outline-none min-w-[180px]">
+                            <option value="all">Все</option>
+                            <option value="characters">Персонажи</option>
+                            <option value="vehicles">Транспорт</option>
+                            <option value="buildings">Здания</option>
+                            <option value="objects">Объекты</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Сетка карточек -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10" id="projectsGrid">
+                    <!-- Карточки будут добавляться через JavaScript -->
+                </div>
+
+                <!-- Кнопка добавления -->
+                <div class="text-center py-10">
+                    <button class="bg-dark-card border-2 border-dashed border-dark-border text-white px-10 py-5 rounded-xl hover:bg-dark-hover hover:border-gray-500 hover:scale-105 transition-all duration-300 flex items-center gap-3 text-lg" id="addProjectBtn">
+                        <span class="text-2xl font-light">+</span>
+                        Добавить проект
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Боковое меню -->
+        <button class="fixed top-5 right-5 z-[1000] bg-dark-card border border-dark-border rounded-lg w-[50px] h-[50px] flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:scale-105" id="sidebarToggle">
+            <span class="w-6 h-0.5 bg-white bar-transition"></span>
+            <span class="w-6 h-0.5 bg-white bar-transition"></span>
+            <span class="w-6 h-0.5 bg-white bar-transition"></span>
+        </button>
+        
+        <div class="fixed top-0 right-[-350px] w-80 h-screen bg-dark-card p-6 sidebar-transition z-[999] overflow-y-auto border-l border-dark-border shadow-[-5px_0_25px_rgba(0,0,0,0.5)]" id="sidebar">
+            <h2 class="text-2xl font-normal text-center mb-8">Меню</h2>
+            
+            <div class="mb-8">
+                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Создание</h3>
+                <div class="space-y-2">
+                    <a href="index.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Из изображения</a>
+                    <a href="favorites.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Избранное</a>
+                    <a href="my-projects.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Мои проекты</a>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Пользователь</h3>
+                <div class="space-y-2">
+                    <a href="profile.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Профиль</a>
+                    <a href="login.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Войти</a>
+                    <a href="register.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Регистрация</a>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Настройки</h3>
+                <div class="space-y-2">
+                    <a href="settings.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Настройки</a>
+                    <a href="help.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Помощь</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно добавления -->
+    <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden" id="addModal">
+        <div class="bg-dark-card rounded-2xl border border-dark-border w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-6 border-b border-dark-border">
+                <h2 class="text-xl font-medium">Добавить проект</h2>
+                <button class="text-gray-400 hover:text-white text-2xl transition-colors duration-300" id="addModalClose">&times;</button>
+            </div>
+            <form class="p-6" id="addForm">
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-sm mb-2">Название проекта</label>
+                    <input type="text" class="w-full bg-dark-input border border-dark-border rounded-lg px-4 py-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-400 text-sm mb-2">Описание</label>
+                    <textarea class="w-full bg-dark-input border border-dark-border rounded-lg px-4 py-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none resize-none" rows="3"></textarea>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-400 text-sm mb-2">Категория</label>
+                    <select class="w-full bg-dark-input border border-dark-border rounded-lg px-4 py-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                        <option value="characters">Персонажи</option>
+                        <option value="vehicles">Транспорт</option>
+                        <option value="buildings">Здания</option>
+                        <option value="objects">Объекты</option>
+                    </select>
+                </div>
+                
+                <div class="flex gap-3 justify-end">
+                    <button type="button" class="bg-dark-card hover:bg-dark-hover text-white px-6 py-3 rounded-lg transition-colors duration-300" id="cancelAdd">Отмена</button>
+                    <button type="submit" class="bg-dark-border hover:bg-dark-hover text-white px-6 py-3 rounded-lg transition-colors duration-300">Добавить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div class="fixed bottom-5 left-1/2 transform -translate-x-1/2 translate-y-[100px] bg-dark-border text-white px-5 py-3 rounded-lg border border-gray-500 shadow-[0_5px_15px_rgba(0,0,0,0.3)] notification-transition z-[1000]" id="notification"></div>
+
+</body>
+</html>

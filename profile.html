@@ -4,24 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль — 3D Модели Генератор</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f0f0f',
+                            card: '#1a1a1a',
+                            input: '#111111',
+                            hover: '#222222',
+                            border: '#333333',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
-<body>
-    <div class="profile-container">
-        <h1>Личный кабинет</h1>
+<body class="bg-dark-bg text-white min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-[400px] w-full bg-dark-card p-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.05)] text-center">
+        <h1 class="text-3xl font-normal mb-6">Личный кабинет</h1>
 
-        <div class="profile-info">
-            <img src="https://via.placeholder.com/120" alt="Аватар" class="profile-avatar">
-            <h2 class="profile-name">Имя пользователя</h2>
-            <p class="profile-email">user@example.com</p>
+        <div class="flex flex-col items-center gap-3 mb-6">
+            <img src="https://via.placeholder.com/120" alt="Аватар" class="w-30 h-30 rounded-full border-2 border-dark-border">
+            <h2 class="text-xl font-normal">Имя пользователя</h2>
+            <p class="text-gray-400 text-sm">user@example.com</p>
         </div>
 
-        <div class="profile-actions">
-            <button class="auth-btn">Редактировать профиль</button>
-            <button class="auth-btn">Выйти</button>
+        <div class="space-y-3">
+            <button class="w-full bg-dark-border hover:bg-dark-hover text-white py-3.5 rounded-lg transition-colors duration-300">Редактировать профиль</button>
+            <button class="w-full bg-dark-border hover:bg-dark-hover text-white py-3.5 rounded-lg transition-colors duration-300">Выйти</button>
         </div>
 
-        <a href="index.html" class="back-link">← На главную</a>
+        <a href="index.html" class="inline-block mt-5 text-gray-400 hover:text-white text-sm no-underline transition-colors duration-300">← На главную</a>
     </div>
 </body>
 </html>

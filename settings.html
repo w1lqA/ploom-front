@@ -4,84 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Настройки — 3D Модели Генератор</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0f0f0f',
+                            card: '#1a1a1a',
+                            input: '#111111',
+                            hover: '#222222',
+                            border: '#333333',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
-<body>
-    <div class="settings-container">
-        <h1>Настройки</h1>
+<body class="bg-dark-bg text-white min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-[600px] w-full bg-dark-card p-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+        <h1 class="text-3xl font-normal mb-8">Настройки</h1>
         
-        <div class="settings-section">
-            <h2>Аккаунт</h2>
-            <div class="setting-item">
-                <label for="username">Имя пользователя</label>
-                <input type="text" id="username" value="Текущий пользователь" class="setting-input">
+        <div class="mb-10 pb-8 border-b border-dark-border last:border-b-0 last:mb-0 last:pb-0">
+            <h2 class="text-xl font-normal mb-5">Аккаунт</h2>
+            <div class="space-y-5 mb-5">
+                <div>
+                    <label for="username" class="block text-gray-400 text-sm mb-2">Имя пользователя</label>
+                    <input type="text" id="username" value="Текущий пользователь" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-400 text-sm mb-2">Электронная почта</label>
+                    <input type="email" id="email" value="user@example.com" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                </div>
             </div>
-            <div class="setting-item">
-                <label for="email">Электронная почта</label>
-                <input type="email" id="email" value="user@example.com" class="setting-input">
-            </div>
-            <button class="auth-btn">Сохранить изменения</button>
+            <button class="bg-dark-border hover:bg-dark-hover text-white px-6 py-3 rounded-lg transition-colors duration-300">Сохранить изменения</button>
         </div>
 
-        <div class="settings-section">
-            <h2>Внешний вид</h2>
-            <div class="setting-item">
-                <label for="theme">Тема оформления</label>
-                <select id="theme" class="setting-input">
-                    <option value="dark">Тёмная</option>
-                    <option value="light">Светлая</option>
-                    <option value="auto">Системная</option>
-                </select>
-            </div>
-            <div class="setting-item">
-                <label for="language">Язык интерфейса</label>
-                <select id="language" class="setting-input">
-                    <option value="ru">Русский</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="settings-section">
-            <h2>Уведомления</h2>
-            <div class="setting-item checkbox">
-                <input type="checkbox" id="email-notifications" checked>
-                <label for="email-notifications">Email уведомления</label>
-            </div>
-            <div class="setting-item checkbox">
-                <input type="checkbox" id="project-updates" checked>
-                <label for="project-updates">Обновления проектов</label>
-            </div>
-            <div class="setting-item checkbox">
-                <input type="checkbox" id="newsletter">
-                <label for="newsletter">Рассылка новостей</label>
+        <div class="mb-10 pb-8 border-b border-dark-border last:border-b-0 last:mb-0 last:pb-0">
+            <h2 class="text-xl font-normal mb-5">Внешний вид</h2>
+            <div class="space-y-5">
+                <div>
+                    <label for="theme" class="block text-gray-400 text-sm mb-2">Тема оформления</label>
+                    <select id="theme" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                        <option value="dark">Тёмная</option>
+                        <option value="light">Светлая</option>
+                        <option value="auto">Системная</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="language" class="block text-gray-400 text-sm mb-2">Язык интерфейса</label>
+                    <select id="language" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                        <option value="ru">Русский</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
             </div>
         </div>
 
-        <div class="settings-section">
-            <h2>Безопасность</h2>
-            <div class="setting-item">
-                <label for="current-password">Текущий пароль</label>
-                <input type="password" id="current-password" class="setting-input" placeholder="Введите текущий пароль">
+        <div class="mb-10 pb-8 border-b border-dark-border last:border-b-0 last:mb-0 last:pb-0">
+            <h2 class="text-xl font-normal mb-5">Уведомления</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="email-notifications" checked class="w-4.5 h-4.5">
+                    <label for="email-notifications" class="text-gray-400 text-sm cursor-pointer">Email уведомления</label>
+                </div>
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="project-updates" checked class="w-4.5 h-4.5">
+                    <label for="project-updates" class="text-gray-400 text-sm cursor-pointer">Обновления проектов</label>
+                </div>
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="newsletter" class="w-4.5 h-4.5">
+                    <label for="newsletter" class="text-gray-400 text-sm cursor-pointer">Рассылка новостей</label>
+                </div>
             </div>
-            <div class="setting-item">
-                <label for="new-password">Новый пароль</label>
-                <input type="password" id="new-password" class="setting-input" placeholder="Введите новый пароль">
-            </div>
-            <div class="setting-item">
-                <label for="confirm-password">Подтвердите пароль</label>
-                <input type="password" id="confirm-password" class="setting-input" placeholder="Повторите новый пароль">
-            </div>
-            <button class="auth-btn">Сменить пароль</button>
         </div>
 
-        <div class="settings-section danger-zone">
-            <h2>Опасная зона</h2>
-            <p class="warning-text">Эти действия нельзя отменить. Будьте осторожны.</p>
-            <button class="danger-btn">Удалить аккаунт</button>
+        <div class="mb-10 pb-8 border-b border-dark-border last:border-b-0 last:mb-0 last:pb-0">
+            <h2 class="text-xl font-normal mb-5">Безопасность</h2>
+            <div class="space-y-5 mb-5">
+                <div>
+                    <label for="current-password" class="block text-gray-400 text-sm mb-2">Текущий пароль</label>
+                    <input type="password" id="current-password" placeholder="Введите текущий пароль" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                </div>
+                <div>
+                    <label for="new-password" class="block text-gray-400 text-sm mb-2">Новый пароль</label>
+                    <input type="password" id="new-password" placeholder="Введите новый пароль" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                </div>
+                <div>
+                    <label for="confirm-password" class="block text-gray-400 text-sm mb-2">Подтвердите пароль</label>
+                    <input type="password" id="confirm-password" placeholder="Повторите новый пароль" class="w-full bg-dark-input border border-dark-border rounded-lg p-3 text-white focus:border-gray-500 focus:bg-dark-hover outline-none">
+                </div>
+            </div>
+            <button class="bg-dark-border hover:bg-dark-hover text-white px-6 py-3 rounded-lg transition-colors duration-300">Сменить пароль</button>
         </div>
 
-        <a href="index.html" class="back-link">← На главную</a>
+        <div class="border border-red-500 p-5 rounded-xl bg-red-500 bg-opacity-5">
+            <h2 class="text-xl font-normal mb-4">Опасная зона</h2>
+            <p class="text-red-400 text-sm mb-4">Эти действия нельзя отменить. Будьте осторожны.</p>
+            <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-colors duration-300">Удалить аккаунт</button>
+        </div>
+
+        <a href="index.html" class="inline-block mt-8 text-gray-400 hover:text-white text-sm no-underline transition-colors duration-300">← На главную</a>
     </div>
 </body>
 </html>
