@@ -5,32 +5,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const addModal = document.getElementById('addModal');
     const addForm = document.getElementById('addForm');
 
-    let projects = [
-        {
-            id: 1,
-            title: "Космический корабль",
-            description: "Футуристический дизайн",
-            image: "https://via.placeholder.com/400x250/333/fff?text=Космический+корабль",
-            date: "2024-01-15",
-            category: "vehicles"
-        },
-        {
-            id: 2,
-            title: "Фэнтези дракон",
-            description: "Мифическое существо", 
-            image: "https://via.placeholder.com/400x250/333/fff?text=Фэнтези+дракон",
-            date: "2024-01-10",
-            category: "characters"
-        },
-        {
-            id: 3,
-            title: "Современный дом",
-            description: "Архитектурный проект",
-            image: "https://via.placeholder.com/400x250/333/fff?text=Современный+дом",
-            date: "2024-01-05",
-            category: "buildings"
-        }
-    ];
+let projects = [
+  {
+    id: 1,
+    title: "Космический корабль",
+    description: "Футуристический дизайн",
+    image: "https://images.unsplash.com/photo-1614314007212-0257d6e2f7d8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2UlMjBzdGF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=900",
+    date: "2024-01-15",
+    category: "vehicles"
+  },
+  {
+    id: 2,
+    title: "Фэнтези дракон",
+    description: "Мифическое существо",
+    image: "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?auto=format&fit=crop&w=800&q=80",
+    date: "2024-01-10",
+    category: "characters"
+  },
+  {
+    id: 3,
+    title: "Современный дом",
+    description: "Архитектурный проект",
+    image: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
+    date: "2024-01-05",
+    category: "buildings"
+  }
+];
+
 
     function showNotification(message) {
         notification.textContent = message;
