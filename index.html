@@ -5,87 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Модели Генератор</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: {
-                            bg: '#0f0f0f',
-                            card: '#1a1a1a',
-                            input: '#111111',
-                            hover: '#222222',
-                            border: '#333333',
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif']
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.4s ease forwards',
-                        'slide-down': 'slideDown 0.4s ease forwards',
-                    },
-                    keyframes: {
-                        slideUp: {
-                            '0%': { transform: 'translateX(-50%) translateY(100px)' },
-                            '100%': { transform: 'translateX(-50%) translateY(0)' }
-                        },
-                        slideDown: {
-                            '0%': { transform: 'translateX(-50%) translateY(0)' },
-                            '100%': { transform: 'translateX(-50%) translateY(100px)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .sidebar-transition {
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .menu-item-transition {
-            transition: all 0.3s ease;
-        }
-        
-        .bar-transition {
-            transition: all 0.3s ease;
-        }
-        
-        .sidebar-toggle.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-        
-        .sidebar-toggle.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .sidebar-toggle.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-    </style>
+    <script src="scripts/tailwind.config.js"></script>
+
+    <link rel="stylesheet" href="/style.css"/>
 </head>
-<body class="bg-dark-bg text-white min-h-screen overflow-x-hidden">
-    <div class="flex min-h-screen relative">
+<body class="bg-gradient-custom text-white min-h-screen overflow-x-hidden">
+    <div class="fixed mx-auto inset-0 pointer-events-none z-0" aria-hidden="true">
+        <img src="/assets/images/bg/red.svg" alt="" class="absolute opacity-85 animate-float f1 top-[11%] left-[11%]">
+        <img src="/assets/images/bg/orange.svg" alt="" class="absolute opacity-85 animate-float f2 top-[30%] left-0">
+        <img src="/assets/images/bg/shape.svg" alt="" class="absolute opacity-85 animate-float f3 top-[45%] left-[10%]">
+        <img src="/assets/images/bg/green.svg" alt="" class="absolute opacity-85 animate-float f4 top-[70%] left-[-4%]">
+        <img src="/assets/images/bg/grad.svg" alt="" class="absolute opacity-85 animate-float f5 top-[85%] left-[23%]">
+        <img src="/assets/images/bg/blue.svg" alt="" class="absolute opacity-85 animate-float f6 top-[-7%] left-[75%]">
+        <img src="/assets/images/bg/arrow.svg" alt="" class="absolute opacity-85 animate-float f7 top-[22%] left-[75%]">
+        <img src="/assets/images/bg/pink.svg" alt="" class="absolute opacity-85 animate-float f8 top-[54%] left-[84%]">
+        <img src="/assets/images/bg/violet.svg" alt="" class="absolute opacity-85 animate-float f9 top-[63%] left-[74%]">
+        <img src="/assets/images/bg/object.svg" alt="" class="absolute opacity-85 animate-float f10 top-[78%] left-[57%]">
+    </div>
+
+    <main class="flex min-h-screen relative">
         <!-- Основной контент -->
         <div class="flex-1 p-5 max-w-[800px] mx-auto flex flex-col justify-center min-h-screen">
-            <header class="text-center mb-15">
-                <h1 class="text-5xl font-light mb-4 tracking-wide">3D Модели</h1>
-                <p class="text-gray-400 text-xl">Создавайте 3D модели из изображений</p>
+
+            <header class="flex flex-row w-full items-center justify-between px-8 py-4 absolute top-0 left-0 right-0 z-[1000]">
+                <a class="max-w-48 w-full" href="/">
+                    <img src="/assets/images/logo.png" alt="" class="object-contain">
+                </a>
+
+                <!-- Боковое меню -->
+                <button class="max-w-20 w-full flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all duration-300 hover:scale-105" id="sidebarToggle">
+                    <img src="/assets/icons/burger-menu.svg" alt="">
+                </button>
             </header>
             
             <!-- Область загрузки -->
@@ -116,35 +66,22 @@
 
                 <!-- Примеры запросов -->
                 <div class="flex flex-wrap gap-3 justify-center">
-                    <div class="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">космический корабль</div>
-                    <div class="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">реалистичный дракон</div>
-                    <div class="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">спортивная машина</div>
-                    <div class="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">робот-помощник</div>
+                    <div class="queryExample bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">космический корабль</div>
+                    <div class="queryExample bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">реалистичный дракон</div>
+                    <div class="queryExample bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">спортивная машина</div>
+                    <div class="queryExample bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500">робот-помощник</div>
                 </div>
             </div>
             
-            <footer class="text-center mt-10 py-5">
-                <p class="text-gray-400 text-sm">© 2025 3D Models Generator</p>
-                <div class="text-gray-400 text-sm mt-2">
-                    <a href="login.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Войти</a> | 
-                    <a href="register.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Регистрация</a> | 
-                    <a href="profile.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Профиль</a>
-                </div>
-            </footer>
+
         </div>
         
-        <!-- Боковое меню -->
-        <button class="fixed top-5 right-5 z-[1000] bg-dark-card border border-dark-border rounded-lg w-[50px] h-[50px] flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:scale-105" id="sidebarToggle">
-            <span class="w-6 h-0.5 bg-white bar-transition"></span>
-            <span class="w-6 h-0.5 bg-white bar-transition"></span>
-            <span class="w-6 h-0.5 bg-white bar-transition"></span>
-        </button>
-        
-        <div class="fixed top-0 right-[-350px] w-80 h-screen bg-dark-card p-6 sidebar-transition z-[999] overflow-y-auto border-l border-dark-border shadow-[-5px_0_25px_rgba(0,0,0,0.5)]" id="sidebar">
-            <h2 class="text-2xl font-normal text-center mb-8">Меню</h2>
+        <!-- Сайдбар -->
+        <aside class="fixed top-0 right-[-350px] w-80 h-screen bg-dark-card p-6 sidebar-transition z-[999] overflow-y-auto border-l border-dark-border shadow-[-5px_0_25px_rgba(0,0,0,0.5)]" id="sidebar">
+            <h2 class="text-2xl text-center mb-8">Меню</h2>
             
             <div class="mb-8">
-                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Создание</h3>
+                <h3 class="text-dark-text-primary text-lg mb-4 pb-2 border-b border-dark-border font-normal">Создание</h3>
                 <div class="space-y-2">
                     <div class="p-4 rounded-lg cursor-pointer menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1">Из изображения</div>
                     <a href="favorites.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Избранное</a>
@@ -153,7 +90,7 @@
             </div>
 
             <div class="mb-8">
-                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Пользователь</h3>
+                <h3 class="text-dark-text-primary text-lg mb-4 pb-2 border-b border-dark-border font-normal">Пользователь</h3>
                 <div class="space-y-2">
                     <a href="profile.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Профиль</a>
                     <a href="login.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Войти</a>
@@ -163,29 +100,40 @@
             </div>
 
             <div class="mb-8">
-                <h3 class="text-gray-400 text-lg mb-4 pb-2 border-b border-dark-border font-normal">Настройки</h3>
+                <h3 class="text-dark-text-primary text-lg mb-4 pb-2 border-b border-dark-border font-normal">Настройки</h3>
                 <div class="space-y-2">
                     <a href="settings.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Настройки</a>
                     <a href="help.html" class="block p-4 rounded-lg menu-item-transition border border-transparent hover:bg-dark-hover hover:border-gray-500 hover:translate-x-1 text-white no-underline">Помощь</a>
                 </div>
             </div>
+        </aside>
+
+    </main>
+
+    <footer class="text-center mt-10 py-5">
+        <p class="text-gray-400 text-sm">© 2025 3D Models Generator</p>
+        <div class="text-gray-400 text-sm mt-2">
+            <a href="login.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Войти</a> | 
+            <a href="register.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Регистрация</a> | 
+            <a href="profile.html" class="text-white hover:text-gray-300 transition-colors duration-300 no-underline">Профиль</a>
         </div>
-    </div>
+    </footer>
 
     <!-- Уведомление -->
     <div class="fixed bottom-5 left-1/2 transform -translate-x-1/2 translate-y-[100px] bg-dark-border text-white px-5 py-3 rounded-lg border border-gray-500 shadow-[0_5px_15px_rgba(0,0,0,0.3)] transition-transform duration-400 z-[1000]" id="notification"></div>
+    
+    
+    <script src="/scripts/sidebar.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const sidebar = document.getElementById('sidebar');
             const uploadArea = document.getElementById('uploadArea');
             const uploadBtn = document.getElementById('uploadBtn');
             const fileInput = document.getElementById('fileInput');
             const generateBtn = document.getElementById('generateBtn');
             const promptInput = document.getElementById('promptInput');
             const notification = document.getElementById('notification');
-            const queryExamples = document.querySelectorAll('.bg-dark-card.border');
+            const queryExamples = document.querySelectorAll('.queryExample');
 
             function showNotification(message) {
                 notification.textContent = message;
@@ -195,12 +143,6 @@
                     notification.classList.remove('translate-y-0');
                     notification.classList.add('translate-y-[100px]');
                 }, 3000);
-            }
-
-            function toggleSidebar() {
-                sidebar.classList.toggle('right-0');
-                sidebar.classList.toggle('right-[-350px]');
-                sidebarToggle.classList.toggle('active');
             }
 
             // Загрузка файлов
@@ -261,17 +203,6 @@
                     promptInput.value = example.textContent;
                     showNotification(`Заполнено: ${example.textContent}`);
                 });
-            });
-
-            // Обработчики меню
-            sidebarToggle.addEventListener('click', toggleSidebar);
-            document.addEventListener('click', (e) => {
-                if (sidebar.classList.contains('right-0') && !sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-                    toggleSidebar();
-                }
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && sidebar.classList.contains('right-0')) toggleSidebar();
             });
         });
     </script>
