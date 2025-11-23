@@ -1,4 +1,4 @@
-import { useNotification } from '../../../shared/hooks/useNotification';
+import { useNotification } from "@/shared/hooks/useNotification";
 
 export function Notification() {
   const { isVisible, message } = useNotification();

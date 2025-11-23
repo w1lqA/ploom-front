@@ -1,5 +1,6 @@
+import { useNotification } from '@/shared/hooks/useNotification';
+import { Button } from '@/shared/ui/Button';
 import { useCallback, useRef, useState } from 'react';
-import { useNotification } from '../../../shared/hooks/useNotification';
 
 export function UploadArea() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -50,34 +51,33 @@ export function UploadArea() {
   };
 
   return (
-    <>
-      <div
-        className={`border-2 border-dashed border-dark-border rounded-xl p-16 text-center bg-dark-card mb-5 transition-all duration-300 ${
-          isDragOver ? 'border-gray-500 bg-dark-hover' : ''
-        }`}
-        id="uploadArea"
-        onDragEnter={handleDragEnter}
-        onDragOver={preventDefaults}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
+    <div
+      className={`border-2 border-dashed border-dark-border rounded-xl p-16 text-center bg-dark-card mb-5 transition-all duration-300 ${
+        isDragOver ? 'border-gray-500 bg-dark-hover' : ''
+      }`}
+      onDragEnter={handleDragEnter}
+      onDragOver={preventDefaults}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
+      <div className="text-4xl mb-4">📁</div>
+      <h3 className="text-lg mb-2 font-normal">Перетащите изображение сюда</h3>
+      <p className="text-gray-400 mb-3">или</p>
+      <Button
+        onClick={handleUploadClick}
+        variant="primary"
+        size="lg"
+        className="whitespace-nowrap"
       >
-        <div className="text-4xl mb-4">📁</div>
-        <h3 className="text-lg mb-2 font-normal">Перетащите изображение сюда</h3>
-        <p className="text-gray-400 mb-3">или</p>
-        <button
-          onClick={handleUploadClick}
-          className="bg-dark-border hover:bg-dark-hover text-white px-8 py-4 rounded-xl text-lg transition-colors duration-300 whitespace-nowrap"
-        >
-          Выберите файл
-        </button>
-        <input
-          type="file"
-          ref={fileInputRef}
-          accept="image/*"
-          className="hidden"
-          onChange={handleFileInputChange}
-        />
-      </div>
-    </>
+        Выберите файл
+      </Button>
+      <input
+        type="file"
+        ref={fileInputRef}
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileInputChange}
+      />
+    </div>
   );
 }

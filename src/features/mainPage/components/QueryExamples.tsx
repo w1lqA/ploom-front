@@ -1,4 +1,4 @@
-import { useNotification } from '../../../shared/hooks/useNotification';
+import { useNotification } from "@/shared/hooks/useNotification";
 
 const EXAMPLE_QUERIES = [
   'космический корабль',
@@ -25,7 +25,7 @@ export function QueryExamples({ onQuerySelect }: QueryExamplesProps) {
         <button
           key={index}
           onClick={() => handleQueryClick(query)}
-          className="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-dark-hover hover:border-gray-500"
+          className="bg-dark-card border border-dark-border rounded-full px-5 py-3 text-sm cursor-pointer transition-all duration-300 hover:bg-accent hover:border-accent"
         >
           {query}
         </button>

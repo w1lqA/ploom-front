@@ -4,7 +4,8 @@ import { PromptInput } from './components/PromptInput';
 import { GenerateButton } from './components/GenerateButton';
 import { QueryExamples } from './components/QueryExamples';
 
-export function GeneratorPage() {
+
+export function MainPage() {
   const [prompt, setPrompt] = useState('');
 
   const handleQuerySelect = (query: string) => {
