@@ -55,9 +55,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 h-screen bg-dark-card w-full max-w-sm p-6 sidebar-transition z-999 overflow-y-auto border-l border-dark-border shadow-[-5px_0_25px_rgba(0,0,0,0.5)] ${
-          isOpen ? 'right-0' : '-right-96'
-        }`}
+        className={`fixed top-0 h-screen w-full max-w-sm p-6 sidebar-transition z-999 overflow-y-auto border-l border-dark-border shadow-[-5px_0_25px_rgba(0,0,0,0.5)]
+          bg-dark-card/80 backdrop-blur-sm
+          ${isOpen ? 'right-0' : '-right-96'}
+        `}
       >
         <h2 className="text-2xl text-start mb-8 mt-2">Меню</h2>
         

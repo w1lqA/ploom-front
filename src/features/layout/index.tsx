@@ -26,7 +26,7 @@ export function Layout() {
       
       <main className="flex min-h-screen relative">
         <div className={`flex-1 flex flex-col ${isAuthPage ? 'items-center justify-center' : ''}`}>
-          {!isAuthPage && <Header onMenuClick={toggleSidebar} />}
+          {!isAuthPage && <Header onMenuClick={toggleSidebar} isMenuOpen={isSidebarOpen} />}
           <div className={isAuthPage ? 'w-full *:mx-auto' : 'flex-1'}>
             <Outlet />
           </div>
