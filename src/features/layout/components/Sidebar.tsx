@@ -1,4 +1,4 @@
-import { Link, useLocation, useRoutes } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 interface SidebarProps {
   isOpen: boolean;
