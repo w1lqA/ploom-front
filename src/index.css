@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  /* Цвета */
+  --color-dark-bg: #0f0f0f;
+  --color-dark-card: #00000060;
+  --color-dark-input: #171D30;
+  --color-dark-hover: #222222;
+  --color-dark-border: #303A58;
+  --color-dark-text-primary: #ffffff;
+  --color-dark-text-secondary: #ffffff70;
+  --color-accent: #F0894E;
+
+  /* Шрифты */
+  --font-gilroy: 'Gilroy', sans-serif;
+  --font-sans: 'Inter', 'Gilroy', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+
+  /* Анимации */
+  --animation-slide-up: slideUp 0.4s ease forwards;
+  --animation-slide-down: slideDown 0.4s ease forwards;
+
+  /* Градиенты */
+  --background-image-gradient-custom: linear-gradient(180deg, #0A0D16 12.18%, #38497C 113.43%);
+}
+
+/* Keyframes для анимаций */
+@keyframes slideUp {
+  0% { transform: translateX(-50%) translateY(100px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateX(-50%) translateY(0); }
+  100% { transform: translateX(-50%) translateY(100px); }
+}
+
+/* Кастомные шрифты */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/assets/fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/assets/fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Кастомные стили */
+.font-gilroy {
+  font-family: 'Gilroy', sans-serif;
+}
+
+body {
+  font-family: 'Inter', 'Gilroy', sans-serif;
+}
+
+/* Анимации для плавающих элементов */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-1 * var(--amp, 12px))); }
+}
+
+.animate-float {
+  animation: floatY var(--dur, 7s) ease-in-out infinite;
+}
+
+/* Кастомные свойства для анимации */
+.f1 { --amp: 10px; --dur: 6.8s; animation-delay: .1s; }
+.f2 { --amp: 12px; --dur: 7.6s; animation-delay: .3s; }
+.f3 { --amp: 14px; --dur: 7.2s; animation-delay: .5s; }
+.f4 { --amp: 11px; --dur: 6.4s; animation-delay: .2s; }
+.f5 { --amp: 13px; --dur: 7.9s; animation-delay: .6s; }
+.f6 { --amp: 9px; --dur: 6.1s; animation-delay: .4s; }
+.f7 { --amp: 12px; --dur: 7.3s; animation-delay: .7s; }
+.f8 { --amp: 10px; --dur: 6.6s; animation-delay: .25s; }
+.f9 { --amp: 12px; --dur: 7.0s; animation-delay: .45s; }
+.f10 { --amp: 25px; --dur: 8.2s; animation-delay: .5s; }
+
+/* Уважение системной настройки «меньше анимаций» */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float { animation: none; }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .f1, .f2, .f6 { display: none; }
+  .animate-float { opacity: .6; }
+}
+
+/* Дополнительные утилиты */
+.sidebar-transition {
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item-transition {
+  transition: all 0.3s ease;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
