@@ -1,8 +1,8 @@
-import { useSidebar } from "../../sidebar/hooks/useSidebar";
+interface HeaderProps {
+  onMenuClick: () => void;
+}
 
-export function Header() {
-  const { toggleSidebar } = useSidebar();
-
+export function Header({ onMenuClick }: HeaderProps) {
   return (
     <header className="flex flex-row w-full items-center justify-between px-8 py-4 absolute top-0 left-0 right-0 z-[1000]">
       <a className="max-w-48 w-full" href="/">
@@ -10,7 +10,7 @@ export function Header() {
       </a>
 
       <button
-        onClick={toggleSidebar}
+        onClick={onMenuClick}
         className="max-w-20 w-full flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all duration-300 hover:scale-105"
       >
         <img src="/assets/icons/burger-menu.svg" alt="Открыть меню" />

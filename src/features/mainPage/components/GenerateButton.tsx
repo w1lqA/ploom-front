@@ -1,4 +1,5 @@
-import { useNotification } from '../../../shared/hooks/useNotification';
+import { useNotification } from "@/shared/hooks/useNotification";
+import { Button } from "@/shared/ui/Button";
 
 interface GenerateButtonProps {
   onClick?: () => void;
@@ -9,10 +10,8 @@ export function GenerateButton({ onClick, disabled = false }: GenerateButtonProp
   const { showNotification } = useNotification();
 
   const handleClick = () => {
-    // Здесь будет логика проверки файла и промпта
     showNotification('Создаём 3D модель...');
     
-    // Имитация процесса создания
     setTimeout(() => {
       showNotification('3D модель успешно создана!');
     }, 2000);
@@ -21,12 +20,15 @@ export function GenerateButton({ onClick, disabled = false }: GenerateButtonProp
   };
 
   return (
-    <button
+    <Button
       onClick={handleClick}
       disabled={disabled}
-      className="w-full bg-dark-border hover:bg-dark-hover disabled:opacity-50 disabled:cursor-not-allowed text-white py-5 rounded-xl text-lg cursor-pointer transition-colors duration-300 mb-8"
+      variant="primary"
+      size="lg"
+      fullWidth
+      className="mb-8"
     >
       Создать 3D модель
-    </button>
+    </Button>
   );
 }

@@ -24,7 +24,16 @@
     /* Важно: отключи эти опции */
     "erasableSyntaxOnly": false,
     "verbatimModuleSyntax": false,
-    "noUncheckedSideEffectImports": false
+    "noUncheckedSideEffectImports": false,
+    
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@features/*": ["./src/features/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@app/*": ["./src/app/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "types": ["vite/client"]
 }
