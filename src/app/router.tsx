@@ -7,6 +7,7 @@ import { ProjectsPage } from '@features/projects';
 import { FavoritesPage } from '@features/favorites';
 import { HelpPage } from '@features/help';
 import { MainPage } from '@/features/mainPage';
+import { CatalogPage } from '@/features/catalog';
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         path: 'help',
         element: <HelpPage />,
       },
+      {
+        path: 'catalog',
+        element: <CatalogPage />,
+      }
     ],
   },
 ]);

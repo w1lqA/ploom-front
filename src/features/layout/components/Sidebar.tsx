@@ -16,6 +16,12 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       ],
     },
     {
+      title: 'Готовые решения',
+      items: [
+        { label: 'Каталог', to: '/catalog'}
+      ]
+    },
+    {
       title: 'Пользователь',
       items: [
         { label: 'Профиль', to: '/profile' },
