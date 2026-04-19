@@ -4,10 +4,7 @@ import { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import { useAuthStore } from '@/features/auth/stores/auth.store';
 import { authService } from '@/features/auth/api/auth.service';
-
-interface ApiError {
-  message: string;
-}
+import { ApiError } from '@/shared/types';
 
 export function useAuth() {
   const setCredentials = useAuthStore((s) => s.setCredentials);
