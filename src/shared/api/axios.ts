@@ -1,6 +1,5 @@
-import { API_BASE_URL } from '@/shared/lib/config';
 import axios from 'axios';
 
 export const apiClient = axios.create({
-    baseURL: `${API_BASE_URL}/api/v1`,
+    baseURL: `/api/v1`,
 });
