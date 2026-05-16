@@ -56,7 +56,7 @@ export function MainPage() {
               className="max-w-[700px] w-full mx-auto"
             >
               <div className="text-center mb-10">
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-4">
+                <h1 className="text-3xl mt-16 md:mt-0 md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-4">
                   Создайте 3D модель по фото
                 </h1>
                 <p className="text-gray-400 text-lg">

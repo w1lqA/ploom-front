@@ -51,7 +51,7 @@ export function ProductModal({ isOpen, onClose, product }: ProductModalProps) {
                     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
                 </Transition.Child>
 
-                <div className="fixed inset-0 overflow-y-auto">
+                <div className="fixed inset-0 overflow-y-auto mt-20 md:hidden">
                     <div className="flex min-h-full items-center justify-center p-4">
                         <Transition.Child
                             as={Fragment}

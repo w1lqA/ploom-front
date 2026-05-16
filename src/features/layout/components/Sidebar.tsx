@@ -78,7 +78,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           ${isOpen ? 'right-0' : '-right-96'}
         `}
       >
-        <h2 className="text-2xl text-start mb-8 mt-2">Меню</h2>
+        <h2 className="text-2xl text-start mb-8 md:mt-2 mt-20">Меню</h2>
 
         {menuSections.map((section, index) => (
           <div key={index} className="mb-8">

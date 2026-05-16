@@ -84,7 +84,7 @@ function FloatingImage({
         scale: { duration: 0.6, delay },
       }}
     >
-      <img src={src} alt="" className="w-full h-full" />
+      <img src={src} alt="" className="w-full h-full object-contain" />
     </motion.div>
   );
 }
@@ -92,18 +92,18 @@ function FloatingImage({
 export function Background() {
   const { isParallaxActive } = useBackgroundStore();
 
-  const elements = [
-    { src: '/assets/images/bg/red.svg', top: '11%', left: '11%', depth: 0.3, speed: 0.8, delay: 0.1, sizeClass: 'f1' },
-    { src: '/assets/images/bg/orange.svg', top: '30%', left: '0%', depth: 0.5, speed: 1.0, delay: 0.2, sizeClass: 'f2' },
-    { src: '/assets/images/bg/shape.svg', top: '45%', left: '10%', depth: 0.2, speed: 0.6, delay: 0.3, sizeClass: 'f3' },
-    { src: '/assets/images/bg/green.svg', top: '70%', left: '-4%', depth: 0.6, speed: 1.2, delay: 0.4, sizeClass: 'f4' },
-    { src: '/assets/images/bg/grad.svg', top: '85%', left: '23%', depth: 0.4, speed: 0.9, delay: 0.5, sizeClass: 'f5' },
-    { src: '/assets/images/bg/blue.svg', top: '-7%', left: '75%', depth: 0.35, speed: 0.7, delay: 0.6, sizeClass: 'f6' },
-    { src: '/assets/images/bg/arrow.svg', top: '22%', left: '75%', depth: 0.55, speed: 1.1, delay: 0.7, sizeClass: 'f7' },
-    { src: '/assets/images/bg/pink.svg', top: '54%', left: '84%', depth: 0.25, speed: 0.75, delay: 0.8, sizeClass: 'f8' },
-    { src: '/assets/images/bg/violet.svg', top: '63%', left: '74%', depth: 0.45, speed: 0.85, delay: 0.9, sizeClass: 'f9' },
-    { src: '/assets/images/bg/object.svg', top: '78%', left: '57%', depth: 0.7, speed: 1.3, delay: 1.0, sizeClass: 'f10' },
-  ];
+const elements = [
+    { src: '/assets/images/bg/red.svg', top: '11%', left: '11%', depth: 0.3, speed: 0.8, delay: 0.1, sizeClass: 'w-24 h-24 hidden md:flex md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/orange.svg', top: '30%', left: '0%', depth: 0.5, speed: 1.0, delay: 0.2, sizeClass: 'w-28 h-28 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/shape.svg', top: '45%', left: '10%', depth: 0.2, speed: 0.6, delay: 0.3, sizeClass: 'w-20 h-20 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/green.svg', top: '70%', left: '-4%', depth: 0.6, speed: 1.2, delay: 0.4, sizeClass: 'w-32 h-32 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/grad.svg', top: '85%', left: '23%', depth: 0.4, speed: 0.9, delay: 0.5, sizeClass: 'w-24 h-24 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/blue.svg', top: '-7%', left: '75%', depth: 0.35, speed: 0.7, delay: 0.6, sizeClass: 'w-28 h-28 hidden md:flex md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/arrow.svg', top: '22%', left: '75%', depth: 0.55, speed: 1.1, delay: 0.7, sizeClass: 'w-20 h-20 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/pink.svg', top: '54%', left: '84%', depth: 0.25, speed: 0.75, delay: 0.8, sizeClass: 'w-24 h-24 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/violet.svg', top: '63%', left: '74%', depth: 0.45, speed: 0.85, delay: 0.9, sizeClass: 'w-20 h-20 md:w-auto md:h-auto' },
+    { src: '/assets/images/bg/object.svg', top: '78%', left: '57%', depth: 0.7, speed: 1.3, delay: 1.0, sizeClass: 'w-36 h-36 md:w-auto md:h-auto' },
+];
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
