@@ -9,6 +9,7 @@ import { Toaster } from 'sonner';
 
 export function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const location = useLocation();
 
   const isAuthPage = ['/login', '/register', '/profile'].includes(location.pathname);
@@ -25,7 +26,7 @@ export function Layout() {
     <div className="bg-gradient-custom text-white min-h-screen overflow-x-hidden">
       <Background />
 
-      <Toaster position="top-center" richColors/>
+      <Toaster position="top-center" richColors />
 
       <main className="flex min-h-screen relative">
         <div className={`flex-1 flex flex-col ${isAuthPage ? 'items-center justify-center' : ''}`}>

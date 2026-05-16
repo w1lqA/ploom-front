@@ -3,34 +3,12 @@ import { Button } from '@shared/ui/Button';
 import { Select } from '@shared/ui/Select';
 import { ProjectCard } from '@features/projects/components/ProjectCard';
 import { AddProjectModal } from './components/AddProjectModal';
+import { mockProjects } from '@/features/projects/model/mock';
 
 export function FavoritesPage() {
   const [sortBy, setSortBy] = useState('newest');
   const [category, setCategory] = useState('all');
   const [showAddModal, setShowAddModal] = useState(false);
-
-  const favoriteProjects = [
-    {
-      id: 1,
-      title: "Спортивный автомобиль",
-      description: "Ретро спорткар с детализированным салоном",
-      image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-12",
-      category: "vehicles",
-      status: "in-progress" as const,
-      isFavorite: true
-    },
-    {
-      id: 2,
-      title: "Современный диван",
-      description: "Угловой диван в скандинавском стиле",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-08",
-      category: "furniture",
-      status: "completed" as const,
-      isFavorite: true
-    }
-  ];
 
   return (
     <div className="max-w-[1200px] mx-auto mt-[100px]">
@@ -69,7 +47,7 @@ export function FavoritesPage() {
 
       {/* Сетка карточек */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-        {favoriteProjects.map((project) => (
+        {mockProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>

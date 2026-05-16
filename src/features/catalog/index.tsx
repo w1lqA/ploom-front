@@ -3,45 +3,13 @@ import { Select } from '@shared/ui/Select';
 import { Input } from '@shared/ui/Input';
 import { ProductCard } from './components/CatalogCard';
 import { Pagination } from './components/Pagination';
+import { mockCatalogProducts } from '@/features/catalog/model/mock';
 
 export function CatalogPage() {
   const [sortBy, setSortBy] = useState('newest');
   const [category, setCategory] = useState('all');
   const [status, setStatus] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-
-  const catalogProducts = [
-    {
-      id: 1,
-      title: "Porsche-стиль купе (3D-брелок)",
-      description: "Узнаваемый силуэт спорткара. Модель для 3D-печати. Подходит для брелока, сувенира или награды.",
-      image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-12",
-      category: "vehicles",
-      status: 'in-stock' as const,
-      price: 2200
-    },
-    {
-      id: 2,
-      title: "Брелок машины",
-      description: "",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-08",
-      category: "vehicles",
-      status: 'out-of-stock' as const,
-      price: 1200
-    },
-    {
-      id: 3,
-      title: "Брелок \"Яичница в сковородке\"",
-      description: "Веселая 3D-модель для печати. Идеальная детализация: яйцо глазунья на чугунной сковороде",
-      image: "https://thumbs.dreamstime.com/b/%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D1%80%D0%BE%D0%B4%D0%B0-%D1%81-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B5%D0%B9-%D1%8F%D0%B8%D1%87%D0%BD%D0%B8%D1%86%D1%8B-%D0%B2%D0%B0%D1%80%D0%B8%D1%82%D1%8C-%D0%BF%D0%BB%D0%BE%D1%81%D0%BA%D0%B8%D0%B9-%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA-119973762.jpg",
-      date: "2024-01-05",
-      category: "objects",
-      status: 'to-order' as const,
-      price: 500
-    }
-  ];
 
   return (
     <div className="max-w-[1200px] mx-auto mt-[100px]">
@@ -109,7 +77,7 @@ export function CatalogPage() {
 
       {/* Сетка карточек */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-        {catalogProducts.map((product) => (
+        {mockCatalogProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

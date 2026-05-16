@@ -5,45 +5,13 @@ import { Select } from '@shared/ui/Select';
 import { ProjectsStats } from './components/ProjectsStats';
 import { Pagination } from './components/Pagination';
 import { Project, ProjectCard } from './components/ProjectCard';
+import { mockProjects } from '@/features/projects/model/mock';
 
 export function ProjectsPage() {
   const [sortBy, setSortBy] = useState('newest');
   const [category, setCategory] = useState('all');
   const [status, setStatus] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-
-  const projects = [
-    {
-      id: 1,
-      title: "Фэнтези замок",
-      description: "Средневековый замок с башнями и мостом",
-      image: "https://images.unsplash.com/photo-1544037943-afd8fa64efbf?ixlib=rb-4.1.0&auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-15",
-      category: "buildings",
-      status: "completed",
-      isFavorite: false
-    },
-    {
-      id: 2,
-      title: "Спортивный автомобиль",
-      description: "Ретро спорткар с детализированным салоном",
-      image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-12",
-      category: "vehicles",
-      status: "in-progress",
-      isFavorite: true
-    },
-    {
-      id: 3,
-      title: "Киберпанк робот",
-      description: "Андроид в стиле киберпанк с неоновыми элементами",
-      image: "https://images.unsplash.com/photo-1755853913084-c55e7ef1746b?ixlib=rb-4.1.0&auto=format&fit=crop&w=800&q=80",
-      date: "2024-01-10",
-      category: "characters",
-      status: "draft",
-      isFavorite: false
-    }
-  ];
 
   return (
     <div className="max-w-[1200px] mx-auto mt-[100px]">
@@ -115,7 +83,7 @@ export function ProjectsPage() {
 
       {/* Сетка проектов */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {projects.map((project) => (
+        {mockProjects.map((project) => (
           <ProjectCard key={project.id} project={project as Project} />
         ))}
       </div>

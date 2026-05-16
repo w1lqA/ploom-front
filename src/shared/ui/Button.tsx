@@ -15,12 +15,12 @@ export function Button({
   className = '',
   ...props 
 }: ButtonProps) {
-  const baseStyles = 'rounded-xl cursor-pointer transition-colors duration-300 font-medium';
+  const baseStyles = 'rounded-xl cursor-pointer disabled:grayscale-100 disabled:cursor-not-allowed transition-colors duration-300 font-medium';
   
   const variants = {
-    primary: 'bg-accent hover:bg-dark-border text-white',
-    secondary: 'bg-dark-card hover:bg-accent text-white',
-    outline: 'bg-transparent hover:bg-accent text-white'
+    primary: 'bg-accent hover:bg-dark-border disabled:hover:bg-accent text-white',
+    secondary: 'bg-dark-card hover:bg-accent disabled:hover:bg-dark-card text-white',
+    outline: 'bg-transparent hover:bg-accent disabled:hover:bg-transparent text-white'
   };
 
   const sizes = {

@@ -5,8 +5,8 @@ export function Footer() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   return (
-    <footer className="text-center mt-10 py-10 border-t border-dark-border/30">
-      <p className="text-gray-500 text-sm">© 2026 3D Models Generator</p>
+    <footer className="text-center mt-10 py-10">
+      <p className="text-gray-500 text-sm">© 2026 Ploom</p>
       <div className="text-gray-400 text-sm mt-3 flex justify-center gap-3">
         {!isAuthenticated ? (
           <>
